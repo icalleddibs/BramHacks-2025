@@ -11,6 +11,11 @@
   const goTo = (path: string) => {
     window.location.href = path;
   };
+  // Scrolling function
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    el?.scrollIntoView({ behavior: 'smooth' });
+  };
 </script>
 
 <style>
@@ -18,21 +23,67 @@
       font-size: 3rem;
       color: rgb(219, 236, 255);
   }
+  
+  /* Right-aligned vertical button container */
+  .section-buttons-vertical {
+    position: absolute;
+    top: 50%;
+    right: 20rem; /* distance from the right edge */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* spacing between buttons */
+    margin-top: 5rem;
+  }
 
+  .section-buttons-vertical button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.6rem;
+    border-radius: 9999px;
+    background: rgba(30, 58, 138, 0.7);
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+    text-align: center;
+  }
+
+  .section-buttons-vertical button:hover {
+    transform: scale(1.05);
+    background: rgba(37, 99, 235, 0.85);
+  }
+
+  home-title {
+    font-size: 4rem;
+    position: absolute;
+    top: 30%; /* adjust vertical position as needed */
+    right: 20rem; /* same offset as buttons */
+    text-align: right;
+    color: white;
+  }
 </style>
 
 
 <section
+  id="section1"
   use:inview
   on:inview_change={(e) => (section1InView = e.detail.inView)}
   class="relative h-screen flex flex-col justify-center items-center text-white bg-cover bg-center"
   style="background-image: url('/images/homepage.png');"
 >
-  <h1>MicroMapping</h1>
+  <home-title>MicroMapping</home-title>
+  <!-- Right-aligned vertical section buttons -->
+  <div class="section-buttons-vertical">
+    <button on:click={() => scrollToSection('section2')}>Mission Statement</button>
+    <button on:click={() => scrollToSection('section3')}>Functionalities</button>
+    <button on:click={() => scrollToSection('section4')}>Meet the Team</button>
+  </div>
 
 </section>
 
 <section
+  id="section2"
+  use:inview
+  on:inview_change={(e) => section2InView = e.detail.inView}
   class="relative h-screen flex flex-col justify-center items-center text-white bg-cover bg-center"
   style="background-image: url('/images/homepage2.png');"
 >
@@ -54,6 +105,9 @@
 </section>
 
 <section
+  id="section3"
+  use:inview
+  on:inview_change={(e) => section3InView = e.detail.inView}
   class="relative h-screen flex flex-col justify-center items-center text-white bg-cover bg-center"
   style="background-image: url('/images/homepage3.png');"
 >
@@ -113,6 +167,7 @@
 </section>
 
 <section
+  id="section4"
   use:inview
   on:inview_change={(e) => section4InView = e.detail.inView}
   class="relative h-screen flex flex-col justify-center items-center text-white bg-cover bg-center"

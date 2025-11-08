@@ -14,6 +14,11 @@
   function toggleSensors() {
     sensorsActive = !sensorsActive;
   }
+  import { goto } from '$app/navigation'; // SvelteKit navigation
+
+  function goHome() {
+    goto('/'); // replace '/' with your actual home route if different
+  }
 
   // Camera feed / ESP32
   let esp32Ip = '192.168.4.1';
@@ -106,6 +111,8 @@
 
   <!-- Robot toggles overlay -->
   <div class="overlay robot-toggles top-left">
+    <button class="home-btn" on:click={goHome} aria-label="Go to Home">🏠︎</button>
+
     <label class="flex items-center gap-2">
       <input type="checkbox" bind:checked={lightsOn} />
       Lights
@@ -229,4 +236,34 @@
 button.active {
   background: #4caf50;
 }
+
+.robot-toggles.top-left {
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* spacing between home button and checkboxes */
+}
+
+.home-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, transform 0.1s;
+  margin-right: 10px; /* <- adds space to the right */
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+}
+
 </style>
