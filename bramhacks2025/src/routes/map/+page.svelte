@@ -1,11 +1,31 @@
 <!-- svelte-ignore non_reactive_update -->
 <script lang="ts">
   import { MapLibre, GeoJSONSource, NavigationControl, GlobeControl, CircleLayer } from 'svelte-maplibre-gl';
-  import { goto } from '$app/navigation';
 
   let center: [number, number] = [-80, 40];
   let zoom = $state(1.5);
   let temperature = $state(false);
+  let animate = $state(false);
+  let darkMode = $state(false);
+  let showTerrain = $state(true);
+
+
+  const frames = [
+    "/src/lib/data/frame0.geojson",
+    "/src/lib/data/frame1.geojson",
+    "/src/lib/data/frame2.geojson"
+  ];
+
+  let frame = $state(0);
+
+  // Loop through frames
+  $effect(() => {
+    let interval = setInterval(() => {
+      frame = (frame + 1) % frames.length;
+    }, 500); // update every 0.5s
+    return () => clearInterval(interval);
+  });
+
 </script>
 
 <style>
@@ -131,8 +151,10 @@
     class="btn btn-white"
     onclick={() => {
       temperature = false;
+      animate = false;
     }}
   >
+  
     Clear All Layers
   </button>
 
@@ -148,6 +170,20 @@
     <span class="label-text">
       Sea Surface Temperature
       <span class="tooltip">Temperature (॰C) measures how much heat is in the water. Sharks can often find prey in warm areas, but can be uncomfortable if it is too hot or too cold for them.</span>
+    </span>
+  </label>
+
+  <!-- Temperature -->
+  <label class="checkbox-label">
+    <input
+      class="checkbox-input"
+      type="checkbox"
+      bind:checked={animate}
+      style="accent-color: rgb(0,255,255);"
+    />
+    <span class="checkbox-dot" style="background: rgb(0, 255, 255)"></span>
+    <span class="label-text">
+      Animate
     </span>
   </label>
 
@@ -184,6 +220,21 @@
       />
     </GeoJSONSource>
   {/if}
+
+  {#if animate}
+    <GeoJSONSource id="positions" data={frames[frame]}>
+      <CircleLayer
+        paint={{
+          "circle-color": "#00ffcc",
+          "circle-radius": 6,
+          "circle-stroke-width": 1,
+          "circle-stroke-color": "#003333"
+        }}
+      />
+    </GeoJSONSource>
+  {/if}
+
+
 
 </MapLibre>
 
