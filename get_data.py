@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 # Create all data directories
 os.makedirs("./data/microplastics", exist_ok=True)
-os.makedirs("./data/chlorophyll", exist_ok=True)
+os.makedirs("./data/currents", exist_ok=True)
 
 # Authenticate with NASA Earthdata
 logger.info("Authenticating with NASA Earthdata...")
