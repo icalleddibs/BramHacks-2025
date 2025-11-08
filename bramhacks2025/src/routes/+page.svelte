@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+  // Navigation function
+  const goTo = (path: string) => {
+    window.location.href = path;
+  };
+</script>
+
+<h1>MicroMapping</h1>
+
+<button on:click={() => goTo('/map')}>Habitability Map</button>
+<button on:click={() => goTo('/animate')}>Animation</button>
