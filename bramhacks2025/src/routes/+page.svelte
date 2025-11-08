@@ -22,6 +22,7 @@
   h1 {
       font-size: 3rem;
       color: rgb(219, 236, 255);
+      font-weight: bold;
   }
   
   /* Right-aligned vertical button container */
@@ -59,6 +60,7 @@
     right: 20rem; /* same offset as buttons */
     text-align: right;
     color: white;
+    font-weight: bold;
   }
 </style>
 
@@ -178,92 +180,51 @@
     <div transition:fly={{ y: 50, duration: 800 }}>
       <h1>Meet the Team</h1>
 
-      <!-- make 5 colums for all 5 people, a little image and a short bio -->
-        <div class="grid-container mt-8">
-            <div class="column-item">
-                <h3 class="text-2xl font-bold mb-2">Adara Hagman</h3>
-                <p class="text-sm">Digital Media Arts student at York University. Interested in mechatronics, space science, and assistive devices.</p>
-            <a
-                href="https://www.linkedin.com/in/adarahagman/"
-                target="_blank"
-                class="hover:decoration-orange-500 underline transition-all duration-200"
-                style="color: #fe8080ff"
-            >LinkedIn</a>
-            <span class="text-orange-400">|</span>
-            <a
-                href="https://www.zenithpathways.ca/adara-hagman"
-                target="_blank"
-                class="hover:decoration-orange-500 underline transition-all duration-200"
-                style="color: #fe8080ff"
-            >Zenith Fellow '24</a>
-            </div>
-
-            <div class="column-item">
-                <h3 class="text-2xl font-bold mb-2">Adithi Balaji</h3>
-                <p class="text-sm">Master's candidate in Physics at the University of Toronto, with research interests in Earth Observation and planetary science.</p>
-                <a
-                    href="https://www.linkedin.com/in/adithi-balaji-00483827b/"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >LinkedIn</a>
-                <span class="text-orange-400">|</span>
-                <a
-                    href="https://www.zenithpathways.ca/adithi-balaji"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >Zenith Fellow '25</a>
-            </div>
-
-            <div class="column-item">
-                <h3 class="text-2xl font-bold mb-2">Diba Alam</h3>
-                <p class="text-sm">Engineering Science (Machine Intelligence & Robotics) student at the University of Toronto. Passionate about leveraging AI & robotics to support space exploration.
-                </p>
-                <a
-                    href="https://www.linkedin.com/in/diba-alam/"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >LinkedIn</a>
-                <span class="text-orange-400">|</span>
-                <a
-                    href="https://www.zenithpathways.ca/diba-alam"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >Zenith Fellow '24</a>
-            </div>
-
-            <div class="column-item">
-                <h3 class="text-2xl font-bold mb-2">Kartik Jassal</h3>
-                <p class="text-sm">desc.</p>
-                <a
-                    href="https://www.linkedin.com/in/kartikjassal/"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >LinkedIn</a>
-            </div>
-
-            <div class="column-item">
-                <h3 class="text-2xl font-bold mb-2">Umar Shabbir</h3>
-                <p class="text-sm">Aerospace engineering graduate from Toronto Metropolitan University with an interest in rockets, rovers, and robotics.</p>
-                <a
-                    href="https://www.linkedin.com/in/umaremshabbir/"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >LinkedIn</a>
-                <span class="text-orange-400">|</span>
-                <a
-                    href="https://www.zenithpathways.ca/umar-shabbir"
-                    target="_blank"
-                    class="hover:decoration-orange-500 underline transition-all duration-200"
-                    style="color: #fe8080ff"
-                >Zenith Fellow '25</a>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-6xl mx-auto">
+        <!-- First row: 3 cards -->
+        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+          <h3 class="text-2xl font-bold mb-2">Adara Hagman</h3>
+          <p class="text-sm mb-4">Digital Media Arts student at York University. Interested in mechatronics, space science, and assistive devices.</p>
+          <div class="flex gap-2">
+            <a href="https://www.linkedin.com/in/adarahagman/" target="_blank" class="underline text-blue-800 hover:text-blue-300">LinkedIn</a>
+          </div>
         </div>
+
+        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+          <h3 class="text-2xl font-bold mb-2">Adithi Balaji</h3>
+          <p class="text-sm mb-4">Master's candidate in Physics at the University of Toronto, with research interests in Earth Observation and planetary science.</p>
+          <div class="flex gap-2">
+            <a href="https://www.linkedin.com/in/adithi-balaji-00483827b/" target="_blank" class="underline text-blue-800 hover:text-blue-300">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+          <h3 class="text-2xl font-bold mb-2">Diba Alam</h3>
+          <p class="text-sm mb-4">Engineering Science (Machine Intelligence & Robotics) student at the University of Toronto. Passionate about leveraging AI & robotics to support space exploration.</p>
+          <div class="flex gap-2">
+            <a href="https://www.linkedin.com/in/diba-alam/" target="_blank" class="underline text-blue-800 hover:text-blue-300">LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Second row: 2 cards, centered -->
+        <div class="md:col-span-3 flex justify-center gap-4 mt-4">
+          <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+            <h3 class="text-2xl font-bold mb-2">Kartik Jassal</h3>
+            <p class="text-sm mb-4">desc.</p>
+            <div class="flex gap-2">
+              <a href="https://www.linkedin.com/in/kartikjassal/" target="_blank" class="underline text-blue-800 hover:text-blue-300">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+            <h3 class="text-2xl font-bold mb-2">Umar Shabbir</h3>
+            <p class="text-sm mb-4">Aerospace engineering graduate from Toronto Metropolitan University with an interest in rockets, rovers, and robotics.</p>
+            <div class="flex gap-2">
+              <a href="https://www.linkedin.com/in/umaremshabbir/" target="_blank" class="underline text-blue-800 hover:text-blue-300">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   {/if}
 </section>
