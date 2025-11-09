@@ -48,10 +48,15 @@
 
   let frame = $state(0);
 
+  function getFrameHours(filename: string) {
+    const match = filename.match(/data\/forecast_t(\d+)h\.geojson/);
+    return match ? parseInt(match[1]) : 0;
+  }
+
   $effect(() => {
     let interval = setInterval(() => {
       frame = (frame + 1) % frames.length;
-    }, 500);
+    }, 2000);
     return () => clearInterval(interval);
   });
 </script>
@@ -177,7 +182,7 @@
       bind:checked={microplastics}
       style="accent-color: #909ce0;"
     />
-    <span class="label-text">Microplastics</span>
+    <span class="label-text">Prediction (Day 30)</span>
   </label>
 
   <!-- Animate -->
@@ -188,21 +193,25 @@
       bind:checked={animate}
       style="accent-color: #909ce0"
     />
-    <span class="label-text">Animate</span>
+    <span class="label-text">30-Day Movement Forecast</span>
   </label>
 
   <!-- Shared intensity scale -->
+   
   <div
     class="mt-2 text-sm text-gray-600 pl-1"
     style="font-weight:500; color:#4b5563; margin-left:auto;"
   >
+  Microplastics Concentration
+  (# particles/km²)
     <div
-      class="w-60 h-2 rounded-full mb-1"
-      style="background: linear-gradient(to right, rgba(33,102,172,0.1), rgb(33,102,172));"
+      class="w-82 h-2 rounded-full mb-1"
+      style="background: linear-gradient(to right, #fff87a, #FF0000);"
     ></div>
-    <div class="flex justify-between w-60 text-xs" style="color:#6b7280;">
-      <span>Low concentration</span>
-      <span>High concentration</span>
+    <div class="flex justify-between w-82 text-xs" style="color:#6b7280;">
+      <span>0</span>
+      <span>1800</span>
+      <span>3600</span>
     </div>
   </div>
 </div>
@@ -274,4 +283,11 @@
     />
   </GeoJSONSource>
   {/if}
+
 </MapLibre>
+
+  {#if animate}
+    <div class="absolute bottom-4 left-4 text-white font-bold text-lg bg-black/50 px-2 py-1 rounded">
+      T+{getFrameHours(frames[frame])}h
+    </div>
+  {/if}

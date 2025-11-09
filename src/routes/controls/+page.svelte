@@ -6,16 +6,17 @@
   let turningRight = false;
   let grapple = false;
   let ungrapple = false;
-  let lightsOn = false;
-  let sensorsActive = false;
+  let blueLightOn = false;
+  let greenLightOn = false;
 
-  function toggleLights() {
-    lightsOn = !lightsOn;
+  function toggleBlueLights() {
+    blueLightOn = !blueLightOn;
   }
 
-  function toggleSensors() {
-    sensorsActive = !sensorsActive;
+  function toggleGreenLights() {
+    greenLightOn = !greenLightOn;
   }
+
   import { goto } from '$app/navigation'; // SvelteKit navigation
 
   function goHome() {
@@ -125,12 +126,12 @@
     <button class="home-btn" on:click={goHome} aria-label="Go to Home">🏠︎</button>
 
     <label class="flex items-center gap-2">
-      <input type="checkbox" bind:checked={lightsOn} />
-      Lights
+      <input type="checkbox" bind:checked={blueLightOn} />
+      Blue Lights
     </label>
     <label class="flex items-center gap-2 ml-4">
-      <input type="checkbox" bind:checked={sensorsActive} />
-      Sensors
+      <input type="checkbox" bind:checked={greenLightOn} />
+      Green Lights
     </label>
   </div>
 
@@ -143,8 +144,8 @@
       <li>Right: {turningRight ? "✅" : "❌"}</li>
       <li>Grapple: {grapple ? "✅" : "❌"}</li>
       <li>Ungrapple: {ungrapple ? "✅" : "❌"}</li>
-      <li>Lights: {lightsOn ? "✅" : "❌"}</li>
-      <li>Sensors: {sensorsActive ? "✅" : "❌"}</li>
+      <li>Blue Lights: {blueLightOn ? "✅" : "❌"}</li>
+      <li>Green Lights: {greenLightOn ? "✅" : "❌"}</li>
     </ul>
   </div>
 
