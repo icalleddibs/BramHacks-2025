@@ -39,7 +39,7 @@
 
   .section-buttons-vertical button {
     padding: 0.75rem 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     border-radius: 9999px;
     background: rgba(30, 58, 138, 0.7);
     color: white;
@@ -56,11 +56,21 @@
   home-title {
     font-size: 4rem;
     position: absolute;
-    top: 30%; /* adjust vertical position as needed */
+    top: 25%; /* adjust vertical position as needed */
+    right: 20rem; /* same offset as buttons */
+    text-align: right;
+    color: #1c2da1;
+    font-weight: bold;
+    font-family: 'Candal', sans-serif;
+  }
+
+  home-desc {
+    font-size: 1.2rem;
+    position: absolute;
+    top: 39%; /* adjust vertical position as needed */
     right: 20rem; /* same offset as buttons */
     text-align: right;
     color: white;
-    font-weight: bold;
     font-family: 'Candal', sans-serif;
   }
 </style>
@@ -73,7 +83,9 @@
   class="relative h-screen flex flex-col justify-center items-center text-white bg-cover bg-center"
   style="background-image: url('/images/homepage.png');"
 >
-  <home-title>Trash-O-Not</home-title>
+  <home-title>Project PONTUS</home-title>
+  <home-desc>(Plastic Observation and Navigation Tracking Using Satellites)</home-desc> 
+
   <!-- Right-aligned vertical section buttons -->
   <div class="section-buttons-vertical">
     <button on:click={() => scrollToSection('section2')}>Mission Statement</button>
@@ -104,6 +116,10 @@
   </svg>
 
   <h1>MISSION STATEMENT</h1>
+  <p class="font-bold text-lg">Satellite microplastic concentration data + ocean current models = pollution forecasting. </p>
+  <br>
+  <p>We identify where microplastics will concentrate before they arrive,</p>
+<p>enabling strategic intervention at future hotspots.</p>
 
 </section>
 
