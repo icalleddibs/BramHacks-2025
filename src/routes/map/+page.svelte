@@ -5,7 +5,7 @@
 
   let center: [number, number] = [-80, 40];
   let zoom = $state(1.5);
-  let temperature = $state(false);
+  let microplastics = $state(false);
   let animate = $state(false);
 
   function goHome() {
@@ -13,9 +13,37 @@
   }
 
   const frames = [
-    "data/frame0.geojson",
-    "data/frame1.geojson",
-    "data/frame2.geojson"
+    "data/forecast_t000h.geojson",
+    "data/forecast_t024h.geojson",
+    "data/forecast_t048h.geojson",
+    "data/forecast_t072h.geojson",
+    "data/forecast_t096h.geojson",
+    "data/forecast_t120h.geojson",
+    "data/forecast_t144h.geojson",
+    "data/forecast_t168h.geojson",
+    "data/forecast_t192h.geojson",
+    "data/forecast_t216h.geojson",
+    "data/forecast_t240h.geojson",
+    "data/forecast_t264h.geojson",
+    "data/forecast_t288h.geojson",
+    "data/forecast_t312h.geojson",
+    "data/forecast_t336h.geojson",
+    "data/forecast_t360h.geojson",
+    "data/forecast_t384h.geojson",
+    "data/forecast_t408h.geojson",
+    "data/forecast_t432h.geojson",
+    "data/forecast_t456h.geojson",
+    "data/forecast_t480h.geojson",
+    "data/forecast_t504h.geojson",
+    "data/forecast_t528h.geojson",
+    "data/forecast_t552h.geojson",
+    "data/forecast_t576h.geojson",
+    "data/forecast_t600h.geojson",
+    "data/forecast_t624h.geojson",
+    "data/forecast_t648h.geojson",
+    "data/forecast_t672h.geojson",
+    "data/forecast_t696h.geojson",
+    "data/forecast_t720h.geojson"
   ];
 
   let frame = $state(0);
@@ -109,13 +137,6 @@
   margin: 0;
 }
 
-.checkbox-dot {
-  display: inline-block;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 9999px;
-  flex: 0 0 auto;
-}
 
 .label-text {
   font-weight: 600;
@@ -141,23 +162,22 @@
   <button
     class="btn btn-white"
     onclick={() => {
-      temperature = false;
+      microplastics = false;
       animate = false;
     }}
   >
     Clear All Layers
   </button>
 
-  <!-- Temperature -->
+  <!-- Microplastics -->
   <label class="checkbox-label">
     <input
       class="checkbox-input"
       type="checkbox"
-      bind:checked={temperature}
-      style="accent-color: rgb(255,0,255);"
+      bind:checked={microplastics}
+      style="accent-color: #909ce0;"
     />
-    <span class="checkbox-dot" style="background: rgb(255,0,255)"></span>
-    <span class="label-text">Temperature</span>
+    <span class="label-text">Microplastics</span>
   </label>
 
   <!-- Animate -->
@@ -166,9 +186,8 @@
       class="checkbox-input"
       type="checkbox"
       bind:checked={animate}
-      style="accent-color: rgb(0,255,255);"
+      style="accent-color: #909ce0"
     />
-    <span class="checkbox-dot" style="background: rgb(0,255,255)"></span>
     <span class="label-text">Animate</span>
   </label>
 
@@ -199,29 +218,60 @@
   <NavigationControl position="bottom-right" />
   <GlobeControl position="bottom-right"/>
 
-  {#if temperature}
-    <GeoJSONSource id="temp-source" data="/temperature.geojson">
-      <CircleLayer
-        id="temp-circles"
-        paint={{
-          'circle-color': 'rgb(255,0,255)',
-          'circle-opacity': ['*', ['get', 'value'], 0.25],
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 0, 4, 18, 10]
-        }}
-      />
-    </GeoJSONSource>
-  {/if}
+  {#if microplastics}
+  <GeoJSONSource id="microplastics-source" data="/data/forecast_t720h.geojson">
+    <CircleLayer
+      id="micro-circles"
+      paint={{
+        'circle-color': [
+          'interpolate',
+          ['linear'],
+          ['get', 'concentration'],
+          0, '#fff87a',      // yellow (low)
+          2200, '#FFA500',   // orange (mid)
+          3600, '#FF0000'    // red (high)
+        ],
+        'circle-opacity': 0.8,
+        'circle-radius': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          0, 0.8,   // at world view (very small)
+          5, 1.5,
+          10, 2.5,
+          18, 4     // still small even when zoomed in
+        ]
+      }}
+    />
+  </GeoJSONSource>
+{/if}
+
 
   {#if animate}
-    <GeoJSONSource id="positions" data={frames[frame]}>
-      <CircleLayer
-        paint={{
-          "circle-color": "#00ffcc",
-          "circle-radius": 6,
-          "circle-stroke-width": 1,
-          "circle-stroke-color": "#003333"
-        }}
-      />
-    </GeoJSONSource>
+  <GeoJSONSource id="positions" data={frames[frame]}>
+    <CircleLayer
+      id="animation-circles"
+      paint={{
+        'circle-color': [
+          'interpolate',
+          ['linear'],
+          ['get', 'concentration'],
+          0, '#fff87a',      // yellow (low)
+          2000, '#FFA500',   // orange (mid)
+          3600, '#FF0000'    // red (high)
+        ],
+        'circle-opacity': 0.8,
+        'circle-radius': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          0, 0.8,   // at world view (very small)
+          5, 1.5,
+          10, 2.5,
+          18, 4     // still small even when zoomed in
+        ]
+      }}
+    />
+  </GeoJSONSource>
   {/if}
 </MapLibre>
