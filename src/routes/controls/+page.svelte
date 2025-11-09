@@ -64,6 +64,15 @@
     }
   };
 
+  const sendRobotCommand = async (cmd: string) => {
+  try {
+    const response = await fetch(`http://${esp32Ip}/control?cmd=${cmd}`);
+    if (!response.ok) throw new Error("Failed to send command");
+  } catch (error) {
+    console.error("Robot command error:", error);
+  }
+};
+
   const changeResolution = async () => {
     await sendControlCommand('framesize', selectedResolution);
     streamUrl = `${streamUrl}?t=${Date.now()}`;
@@ -143,8 +152,8 @@
     <div class="absolute bottom-6 left-6 bg-white/20 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/30 flex flex-col items-center gap-2">
       <button
         class="w-13 h-13 bg-blue-600 text-white text-3xl rounded-full hover:bg-blue-700"
-        on:mousedown={() => (movingForward = true)}
-        on:mouseup={() => (movingForward = false)}
+        on:mousedown={() => { movingForward = true; sendRobotCommand('F'); }}
+        on:mouseup={() => { movingForward = false; sendRobotCommand('S'); }}
       >
       ▴
       </button>
@@ -152,16 +161,16 @@
       <div class="flex gap-2">
         <button
           class="w-13 h-13 bg-blue-600 text-white text-3xl rounded-full hover:bg-blue-700"
-          on:mousedown={() => (turningLeft = true)}
-          on:mouseup={() => (turningLeft = false)}
+          on:mousedown={() => { turningLeft = true; sendRobotCommand('L'); }}
+          on:mouseup={() => { turningLeft = false; sendRobotCommand('S'); }}
         >
         ◂
         </button>
 
         <button
           class="ml-13 w-13 h-13 bg-blue-600 text-white text-3xl rounded-full hover:bg-blue-700"
-          on:mousedown={() => (turningRight = true)}
-          on:mouseup={() => (turningRight = false)}
+          on:mousedown={() => { turningRight = true; sendRobotCommand('R'); }}
+          on:mouseup={() => { turningRight = false; sendRobotCommand('S'); }}
         >
         ▸
         </button>
@@ -169,8 +178,8 @@
 
       <button
         class="w-13 h-13 bg-blue-600 text-white text-3xl rounded-full hover:bg-blue-700"
-        on:mousedown={() => (movingBackward = true)}
-        on:mouseup={() => (movingBackward = false)}
+          on:mousedown={() => { movingBackward = true; sendRobotCommand('B'); }}
+          on:mouseup={() => { movingBackward = false; sendRobotCommand('S'); }}
       >
       ▾
       </button>
@@ -180,15 +189,21 @@
 
   <div class="flex items-center gap-3 justify-start">
     <button class="w-12 h-12 bg-green-600 text-white text-lg rounded-full hover:bg-green-700"
-    on:mousedown={() => (grapple = true)}
-          on:mouseup={() => (grapple = false)}>X</button>
+      on:mousedown={() => { grapple = true; sendRobotCommand('G'); }}
+      on:mouseup={() => { grapple = false; sendRobotCommand('S'); }}
+    >
+      X
+    </button>
     <span class="text-white font-semibold text-sm">Grapple</span>
   </div>
 
   <div class="flex items-center gap-3">
     <button class="w-12 h-12 bg-red-600 text-white text-lg rounded-full hover:bg-red-700"
-    on:mousedown={() => (ungrapple = true)}
-          on:mouseup={() => (ungrapple = false)}>Y</button>
+    on:mousedown={() => { ungrapple = true; sendRobotCommand('U'); }}
+      on:mouseup={() => { ungrapple = false; sendRobotCommand('S'); }}
+    >
+      Y
+    </button>
     <span class="text-white font-semibold text-sm">Ungrapple</span>
   </div>
 </div>
