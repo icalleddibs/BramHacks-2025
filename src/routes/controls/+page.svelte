@@ -83,6 +83,18 @@
     vflipEnabled = !vflipEnabled;
     await sendControlCommand('vflip', vflipEnabled ? 1 : 0);
   };
+
+  $: if (blueLightOn) {
+    sendRobotCommand('A');   // Replace with your ESP32 command for Blue Light ON
+  } else {
+    sendRobotCommand('C');  // Replace with your ESP32 command for Blue Light OFF
+  }
+
+  $: if (greenLightOn) {
+    sendRobotCommand('D');   // Replace with your ESP32 command for Green Light ON
+  } else {
+    sendRobotCommand('C');  // Replace with your ESP32 command for Green Light OFF
+  }  
 </script>
 
 <div class="camera-container">
