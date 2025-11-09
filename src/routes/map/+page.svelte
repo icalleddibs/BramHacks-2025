@@ -13,9 +13,9 @@
   }
 
   const frames = [
-    "/src/lib/data/frame0.geojson",
-    "/src/lib/data/frame1.geojson",
-    "/src/lib/data/frame2.geojson"
+    "data/frame0.geojson",
+    "data/frame1.geojson",
+    "data/frame2.geojson"
   ];
 
   let frame = $state(0);
