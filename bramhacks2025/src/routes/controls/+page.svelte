@@ -4,6 +4,8 @@
   let movingBackward = false;
   let turningLeft = false;
   let turningRight = false;
+  let grapple = false;
+  let ungrapple = false;
   let lightsOn = false;
   let sensorsActive = false;
 
@@ -130,6 +132,8 @@
       <li>Backward: {movingBackward ? "✅" : "❌"}</li>
       <li>Left: {turningLeft ? "✅" : "❌"}</li>
       <li>Right: {turningRight ? "✅" : "❌"}</li>
+      <li>Grapple: {grapple ? "✅" : "❌"}</li>
+      <li>Ungrapple: {ungrapple ? "✅" : "❌"}</li>
       <li>Lights: {lightsOn ? "✅" : "❌"}</li>
       <li>Sensors: {sensorsActive ? "✅" : "❌"}</li>
     </ul>
@@ -171,6 +175,23 @@
       ▾
       </button>
     </div>
+    <!-- Grapple Controls (next to direction pad) -->
+  <div class="absolute bottom-6 left-56 bg-white/20 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/30 flex flex-col items-start gap-19 ml-5">
+
+  <div class="flex items-center gap-3 justify-start">
+    <button class="w-12 h-12 bg-green-600 text-white text-lg rounded-full hover:bg-green-700"
+    on:mousedown={() => (grapple = true)}
+          on:mouseup={() => (grapple = false)}>X</button>
+    <span class="text-white font-semibold text-sm">Grapple</span>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <button class="w-12 h-12 bg-red-600 text-white text-lg rounded-full hover:bg-red-700"
+    on:mousedown={() => (ungrapple = true)}
+          on:mouseup={() => (ungrapple = false)}>Y</button>
+    <span class="text-white font-semibold text-sm">Ungrapple</span>
+  </div>
+</div>
 </div>
 
 <style>

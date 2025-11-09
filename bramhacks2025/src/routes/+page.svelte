@@ -39,13 +39,13 @@
 
   .section-buttons-vertical button {
     padding: 0.75rem 1.5rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     border-radius: 9999px;
     background: rgba(30, 58, 138, 0.7);
     color: white;
-    font-weight: bold;
     transition: transform 0.2s, background 0.2s;
     text-align: center;
+    font-family: 'Epilogue';
   }
 
   .section-buttons-vertical button:hover {
@@ -61,6 +61,7 @@
     text-align: right;
     color: white;
     font-weight: bold;
+    font-family: 'Candal', sans-serif;
   }
 </style>
 
@@ -72,7 +73,7 @@
   class="relative h-screen flex flex-col justify-center items-center text-white bg-cover bg-center"
   style="background-image: url('/images/homepage.png');"
 >
-  <home-title>MicroMapping</home-title>
+  <home-title>Trash-O-Not</home-title>
   <!-- Right-aligned vertical section buttons -->
   <div class="section-buttons-vertical">
     <button on:click={() => scrollToSection('section2')}>Mission Statement</button>
@@ -182,7 +183,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-6xl mx-auto">
         <!-- First row: 3 cards -->
-        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-90 h-50">
           <h3 class="text-2xl font-bold mb-2">Adara Hagman</h3>
           <p class="text-sm mb-4">Digital Media Arts student at York University. Interested in mechatronics, space science, and assistive devices.</p>
           <div class="flex gap-2">
@@ -190,7 +191,7 @@
           </div>
         </div>
 
-        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-90 h-50">
           <h3 class="text-2xl font-bold mb-2">Adithi Balaji</h3>
           <p class="text-sm mb-4">Master's candidate in Physics at the University of Toronto, with research interests in Earth Observation and planetary science.</p>
           <div class="flex gap-2">
@@ -198,7 +199,7 @@
           </div>
         </div>
 
-        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+        <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-90 h-50">
           <h3 class="text-2xl font-bold mb-2">Diba Alam</h3>
           <p class="text-sm mb-4">Engineering Science (Machine Intelligence & Robotics) student at the University of Toronto. Passionate about leveraging AI & robotics to support space exploration.</p>
           <div class="flex gap-2">
@@ -208,7 +209,7 @@
 
         <!-- Second row: 2 cards, centered -->
         <div class="md:col-span-3 flex justify-center gap-4 mt-4">
-          <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+          <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-90 h-50">
             <h3 class="text-2xl font-bold mb-2">Kartik Jassal</h3>
             <p class="text-sm mb-4">desc.</p>
             <div class="flex gap-2">
@@ -216,7 +217,7 @@
             </div>
           </div>
 
-          <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-80 h-50">
+          <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-90 h-50">
             <h3 class="text-2xl font-bold mb-2">Umar Shabbir</h3>
             <p class="text-sm mb-4">Aerospace engineering graduate from Toronto Metropolitan University with an interest in rockets, rovers, and robotics.</p>
             <div class="flex gap-2">

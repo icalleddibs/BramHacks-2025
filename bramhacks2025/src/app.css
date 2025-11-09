@@ -1,10 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Candal&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Candal&family=Epilogue:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 
+
 :root {
-  font-family: 'DM Sans', sans-serif;
+  --font-header: 'Candal', sans-serif;
+  --font-body: 'Epilogue', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Default body text */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #111;
+}
+
+/* Only h1 uses Candal */
+h1 {
+  font-family: var(--font-header);
+  letter-spacing: 0.5px;
+}
+
+/* Everything else uses Epilogue */
+h2, h3, h4, h5, h6,
+p, li, button, label, input, a, span {
+  font-family: var(--font-body);
 }
