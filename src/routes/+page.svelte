@@ -211,7 +211,7 @@
         <div class="md:col-span-3 flex justify-center gap-4 mt-4">
           <div class="bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center w-90 h-50">
             <h3 class="text-2xl font-bold mb-2">Kartik Jassal</h3>
-            <p class="text-sm mb-4">desc.</p>
+            <p class="text-sm mb-4">Space Engineering student at York University. Passionate about space robotics and GNC for space debris collection and on-orbit assembly.</p>
             <div class="flex gap-2">
               <a href="https://www.linkedin.com/in/kartikjassal/" target="_blank" class="underline text-blue-800 hover:text-blue-300">LinkedIn</a>
             </div>
@@ -227,5 +227,12 @@
         </div>
       </div>
     </div>
+    <button
+      class="absolute bottom-6 px-4 py-3 rounded-2xl text-sm bg-[#3951d4] text-white text-lg hover:scale-105 transition-transform"
+      on:click={() => scrollToSection('section1')}
+    >
+      Home
+    </button>
   {/if}
 </section>
+
