@@ -73,6 +73,19 @@
     color: white;
     font-family: 'Candal', sans-serif;
   }
+
+  .blue-link {
+  color: #b0defd;           /* your blue theme */
+  text-decoration: none;     /* removes underline */
+  font-weight: 500;
+  transition: color 0.2s, text-decoration 0.2s;
+  text-decoration: underline;
+}
+
+.blue-link:hover {
+  color: #0034b6;            /* slightly darker blue on hover */
+  text-decoration: underline; /* subtle underline on hover */
+}
 </style>
 
 
@@ -84,7 +97,8 @@
   style="background-image: url('/images/homepage.png');"
 >
   <home-title>Project PONTUS</home-title>
-  <home-desc>(Plastic Observation and Navigation Tracking Using Satellites)</home-desc> 
+  <home-desc>(Plastic Observation and Navigation Tracking Using Satellites) |  
+    <a href="https://github.com/icalleddibs/BramHacks-2025" target="_blank" rel="noopener noreferrer" class="blue-link">GitHub Repository</a></home-desc> 
 
   <!-- Right-aligned vertical section buttons -->
   <div class="section-buttons-vertical">
